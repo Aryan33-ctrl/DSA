@@ -15,18 +15,24 @@
  */
 class Solution {
     public boolean isSymmetric(TreeNode root) {
-        return isMirror(root.left,root.right);
-
-        
+        if(root==null){
+            return true;
+        }
+        return isSame(root.left,root.right);
     }
-    private boolean isMirror(TreeNode p,TreeNode q){
-        if(p==null&&q==null)return true;
 
-        if(p==null||q==null) return false;
+    public boolean isSame(TreeNode a,TreeNode b){
+        if(b==null||a==null){
+            return a==b;
+        }
 
-        if(p.val!=q.val)return false;
+        if(a.val!=b.val){
+            return false;
+        }
 
-        return isMirror(p.right,q.left)&&
-        isMirror(p.left,q.right); 
+        return isSame(a.left,b.right)&& isSame(a.right,b.left);
+
+
     }
+
 }
